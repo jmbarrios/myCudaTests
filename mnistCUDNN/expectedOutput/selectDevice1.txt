@@ -1,0 +1,58 @@
+cudnnGetVersion() : 6021 , CUDNN_VERSION from cudnn.h : 6021 (6.0.21)
+Host compiler version : GCC 5.4.0
+There are 2 CUDA capable devices on your machine :
+device 0 : sms 15  Capabilities 6.1, SmClock 1683.0 Mhz, MemSize (Mb) 8110, MemClock 4004.0 Mhz, Ecc=0, boardGroupID=0
+device 1 : sms 15  Capabilities 6.1, SmClock 1683.0 Mhz, MemSize (Mb) 8113, MemClock 4004.0 Mhz, Ecc=0, boardGroupID=1
+Using device 1
+
+Testing single precision
+Loading image data/one_28x28.pgm
+Performing forward propagation ...
+Testing cudnnGetConvolutionForwardAlgorithm ...
+Fastest algorithm is Algo 1
+Testing cudnnFindConvolutionForwardAlgorithm ...
+^^^^ CUDNN_STATUS_SUCCESS for Algo 0: 0.025600 time requiring 0 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 1: 0.026624 time requiring 3464 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 2: 0.035840 time requiring 57600 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 4: 0.074240 time requiring 207360 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 7: 0.097216 time requiring 2057744 memory
+Resulting weights from Softmax:
+0.0000000 0.9999399 0.0000000 0.0000000 0.0000561 0.0000000 0.0000012 0.0000017 0.0000010 0.0000000 
+Loading image data/three_28x28.pgm
+Performing forward propagation ...
+Resulting weights from Softmax:
+0.0000000 0.0000000 0.0000000 0.9999288 0.0000000 0.0000711 0.0000000 0.0000000 0.0000000 0.0000000 
+Loading image data/five_28x28.pgm
+Performing forward propagation ...
+Resulting weights from Softmax:
+0.0000000 0.0000008 0.0000000 0.0000002 0.0000000 0.9999820 0.0000154 0.0000000 0.0000012 0.0000006 
+
+Result of classification: 1 3 5
+
+Test passed!
+
+Testing half precision (math in single precision)
+Loading image data/one_28x28.pgm
+Performing forward propagation ...
+Testing cudnnGetConvolutionForwardAlgorithm ...
+Fastest algorithm is Algo 1
+Testing cudnnFindConvolutionForwardAlgorithm ...
+^^^^ CUDNN_STATUS_SUCCESS for Algo 1: 0.021504 time requiring 3464 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 0: 0.035840 time requiring 0 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 2: 0.061120 time requiring 28800 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 4: 0.080512 time requiring 207360 memory
+^^^^ CUDNN_STATUS_SUCCESS for Algo 7: 0.095744 time requiring 2057744 memory
+Resulting weights from Softmax:
+0.0000001 1.0000000 0.0000001 0.0000000 0.0000563 0.0000001 0.0000012 0.0000017 0.0000010 0.0000001 
+Loading image data/three_28x28.pgm
+Performing forward propagation ...
+Resulting weights from Softmax:
+0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000714 0.0000000 0.0000000 0.0000000 0.0000000 
+Loading image data/five_28x28.pgm
+Performing forward propagation ...
+Resulting weights from Softmax:
+0.0000000 0.0000008 0.0000000 0.0000002 0.0000000 1.0000000 0.0000154 0.0000000 0.0000012 0.0000006 
+
+Result of classification: 1 3 5
+
+Test passed!
